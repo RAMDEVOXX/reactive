@@ -7,9 +7,11 @@ spring:
     cloud:
         vault:
             kv:
-                enabled: true
-            scheme: http
-            token: 00000000-0000-0000-0000-000000000000
+                enabled: false
+        config:
+                server:
+                    git:
+                        uri: https://github:com/RAMDEVOXX/reactive/tree/master/src/main/resources/reload
     datasource:
         data: classpath:data/categories.sql
         driver-class-name: org.h2.Driver
