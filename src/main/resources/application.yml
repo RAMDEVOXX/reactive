@@ -1,5 +1,5 @@
 server:
-    address: localhost
+    address: 127.0.0.1
     port: 8085
 spring:
     application:
@@ -26,8 +26,15 @@ spring:
         hibernate:
             ddl-auto: create-drop
         show-sql: true
+    boot:
+        admin:
+            client:
+                url: http://${server.address}:${server.port}
 management:
     endpoints:
         web:
             exposure:
-                include: "*"
+                include: '*'
+    endpoint:
+        health:
+            show-details: always
