@@ -3,8 +3,18 @@ spring:
     name: re@ctive-app
   profiles:
     active: dev
+    cloud:
+      vault:
+        kv:
+          enabled: false
   cloud:
     config:
-      server:
-        git:
-          uri: file://C:/Users/hchedly/Perso/workspace/reactive.git
+      uri: http://localhost:8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
