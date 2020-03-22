@@ -22,9 +22,3 @@ spring:
         admin:
             client:
                 url: http://${server.address}:${server.port}
-
-reload:
-    client:
-        version: 1.0.0
-        number: 1
-

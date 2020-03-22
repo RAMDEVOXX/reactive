@@ -1,6 +1,8 @@
 spring:
   application:
-    name: re@ctive-app
+    name: re@ctive-client
+#    name: cloud-configuration si on veut que le micro service pointe vers un
+  # fichier specifique , ici c'est cloud-configuration.yml si non il pointe par defaut sur application.yml
   profiles:
     active: dev
     cloud:
