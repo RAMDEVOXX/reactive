@@ -3,21 +3,21 @@ server:
     port: 8085
 spring:
     datasource:
-        data: classpath:data/categories.sql
         driver-class-name: org.h2.Driver
-        name: library-db
+        name: H2_BD_STORE_FILE
+        username: sa
         password: ''
         sql-script-encoding: UTF-8
-        url: jdbc:h2:file:./src/main/resources/database/library-db
-        username: sa
+        url: jdbc:h2:file:./src/main/resources/database/H2_BD_STORE_FILE
     h2:
         console:
             enabled: true
     jpa:
         database-platform: org.hibernate.dialect.H2Dialect
         hibernate:
-            ddl-auto: create-drop
+            ddl-auto: update
         show-sql: true
+#Pour la suppervision ADMIN
     boot:
         admin:
             client:
