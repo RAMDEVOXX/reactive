@@ -18,16 +18,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 
 @Configuration
 @SpringBootApplication(exclude={WebMvcAutoConfiguration.class, MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
+//http://localhost:8085/swagger-ui.html#
 @EnableSwagger2WebFlux
+//http://localhost:8085/applications
 @EnableAdminServer
 @EnableDiscoveryClient
 //Il faut s'assurer qu'il n'y ait pas des dépendences mvc (pom tree!=)
 //il faut ajouter un @EnableAutoConfiguration(exclude = {WebMvcAutoConfiguration.class }) dans la class de de Config
 @EntityScan("com.devox.bean")
-@ComponentScan(basePackages = {"com.devox"
-//        "com.devox.services",
-//        "com.devox.controller"
-})
+@ComponentScan(basePackages = {"com.devox"})
 //@EnableWebFlux
 public class ReactiveApplication {
 

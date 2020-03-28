@@ -25,7 +25,6 @@ public class SpringBootConfiguration implements WebFluxConfigurer {
                 .select().apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build()
-                .pathMapping("/swagger")
                 .directModelSubstitute(LocalDate.class, String.class)
                 .genericModelSubstitutes(ResponseEntity.class);
     }
