@@ -2,23 +2,39 @@ server:
     address: 127.0.0.1
     port: 8085
 spring:
-    datasource:
-        driver-class-name: org.h2.Driver
-        name: H2_BD_STORE_FILE
-        username: sa
-        password: ''
-        sql-script-encoding: UTF-8
-        url: jdbc:h2:file:./src/main/resources/database/H2_BD_STORE_FILE
-    h2:
-        console:
-            enabled: true
-    jpa:
-        database-platform: org.hibernate.dialect.H2Dialect
-        hibernate:
-            ddl-auto: update
-        show-sql: true
+    #Configuration H2
+#    datasource:
+#        driver-class-name: org.h2.Driver
+#        name: H2_BD_STORE_FILE
+#        username: sa
+#        password: ''
+#        sql-script-encoding: UTF-8
+#        url: jdbc:h2:file:./src/main/resources/database/H2_BD_STORE_FILE
+#    h2:
+#        console:
+#            enabled: true
+#    jpa:
+#        database-platform: org.hibernate.dialect.H2Dialect
+#        hibernate:
+#            ddl-auto: update
+#        show-sql: true
+
 #Pour la suppervision ADMIN
     boot:
         admin:
             client:
                 url: http://${server.address}:${server.port}
+    security:
+        user:
+            name: admin
+            password: admin
+#config:
+#    mongodb:
+#            username: '{cipher}052293e816f3bd8adc7a138b9b02c50f18c1c1c71389800b5421dba495b60318'
+#            password: 'raouf_280109'
+    data:
+        mongodb:
+#                host: 'cluster0-7vpkp.mongodb.net'
+#                port: '27017'
+                uri: mongodb+srv://ramdevoxx:raouf_280109@cluster0-7vpkp.mongodb.net/mongodb_dev?retryWrites=true&w=majority
+                database: mongodb_dev

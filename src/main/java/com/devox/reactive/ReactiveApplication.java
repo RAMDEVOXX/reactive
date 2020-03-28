@@ -3,13 +3,32 @@ package com.devox.reactive;
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 
-@SpringBootApplication
+
+
+
+
+@Configuration
+@SpringBootApplication(exclude={WebMvcAutoConfiguration.class, MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
+@EnableSwagger2WebFlux
 @EnableAdminServer
 @EnableDiscoveryClient
-@ComponentScan(basePackages = "com.devox")
+//Il faut s'assurer qu'il n'y ait pas des dépendences mvc (pom tree!=)
+//il faut ajouter un @EnableAutoConfiguration(exclude = {WebMvcAutoConfiguration.class }) dans la class de de Config
+@EntityScan("com.devox.bean")
+@ComponentScan(basePackages = {"com.devox"
+//        "com.devox.services",
+//        "com.devox.controller"
+})
+//@EnableWebFlux
 public class ReactiveApplication {
 
     public static void main(String[] args) {
@@ -17,4 +36,3 @@ public class ReactiveApplication {
     }
 
 }
-

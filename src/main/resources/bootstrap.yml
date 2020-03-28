@@ -21,3 +21,8 @@ management:
   endpoint:
     health:
       show-details: always
+server:
+  servlet:
+    context-path: /reactive
+encrypt:
+  key: ${user.home}/.ssh/id_rsa.pub
