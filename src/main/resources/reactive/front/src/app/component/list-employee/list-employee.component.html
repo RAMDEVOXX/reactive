@@ -1,0 +1,39 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h4 class="my-3 mx-3" >Liste des employés</h4>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Adresse email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees | async">
+          <td>{{employee.firstName}}</td>
+          <td>{{employee.lastName}}</td>
+          <td><a href="mailto:#"> {{employee.email}} </a></td>
+          <td>
+            <button (click)="getDetailsEmployee(employee.id)" class="btn btn-outline-info btn-rounded" style="margin-right: 10px">
+              <i class="fa fa-pencil-square-o" (click)="getDetailsEmployee(employee.id)" aria-hidden="true"></i>
+            </button>
+            <button type="button" (click)="openConfirmModal(employee)"  class="btn btn-outline-danger btn-rounded waves-effect">
+              <i class="fa fa-trash"> </i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="float-right px-5">
+  <button type="button" class=" btn btn-outline-success" (click)="openModalAjout()">
+    <i class="fa fa-plus-square-o"></i>
+    Ajouter un employé
+  </button>
+</div>

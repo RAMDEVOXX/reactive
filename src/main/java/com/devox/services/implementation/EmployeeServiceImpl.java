@@ -20,11 +20,26 @@ public class EmployeeServiceImpl  implements IEmployeeService {
     }
 
     public Mono findById(int id) {
-        return employeeDao.findById(String.valueOf(id));
+        return employeeDao.findById(id);
     }
 
     @Override
     public Flux<Employee> findAllEmployees() {
         return employeeDao.findAll();
+    }
+
+    public Mono<Employee> update(int id, Employee updatedEmployee) {
+        return employeeDao.findById(id)
+                .map(employeeToUpdate -> Employee.builder()
+                        .firstName(updatedEmployee.getFirstName())
+                        .lastName(updatedEmployee.getLastName())
+                        .email(updatedEmployee.getEmail())
+                        .build())
+                .flatMap(employeeDao::save);
+    }
+
+    public Mono<Employee> deleteById(int id) {
+        return employeeDao.findById(id)
+                .flatMap(employee -> employeeDao.delete(employee).then(Mono.just(employee)));
     }
 }

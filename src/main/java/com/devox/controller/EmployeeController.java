@@ -4,11 +4,13 @@ import com.devox.bean.Employee;
 import com.devox.services.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/employees")
 public class EmployeeController {
 
@@ -26,10 +28,16 @@ public class EmployeeController {
         return employeeService.findById(id);
     }
 
+    @PutMapping("/{id}")
+    public Mono<ResponseEntity<Employee>> updateEmployee(@PathVariable("id") int id,@RequestBody Employee employee) {
+        return employeeService.update(id, employee)
+                .map(updatedemployee -> new ResponseEntity<>(updatedemployee, HttpStatus.OK))
+                .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+    
     @GetMapping
     public Flux<Employee> findAllEmployees(){
         return employeeService.findAllEmployees();
     }
-
 
 }

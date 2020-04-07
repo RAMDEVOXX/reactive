@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h4 class="modal-title">Enregistrer un employé</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form [formGroup]="createEmployeeForm" (ngSubmit)="ajouterEmployee()">
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="nom">Nom :</label>
+      <input type="text" class="form-control" id="nom" aria-describedby="nomHelp" formControlName="lastName" >
+      <small id="nomHelp" class="form-text text-muted">Veuiller saisir votre nom.</small>
+    </div>
+    <div class="form-group">
+      <label for="prenom">Prénom :</label>
+      <input type="text" class="form-control" id="prenom" aria-describedby="prenomHelp">
+      <small id="prenomHelp" class="form-text text-muted">Veuiller saisir votre prénom.</small>
+    </div>
+    <div class="form-group">
+      <label for="mail">Addresse mail :</label>
+      <input type="email" class="form-control" id="mail" aria-describedby="emailHelp">
+      <small id="emailHelp" class="form-text text-muted">Veuiller saisir votre adresse mail.</small>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="activeModal.close('Close click')">Annuler</button>
+    <button type="submit" class="btn btn-outline-danger">Ajouter</button>
+  </div>
+</form>

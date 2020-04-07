@@ -18,4 +18,8 @@ public interface IEmployeeService {
 
     Flux<Employee> findAllEmployees();
 
+    Mono<Employee> update(int id, Employee employee);
+
+    Mono<Employee> deleteById(int id);
+
 }
