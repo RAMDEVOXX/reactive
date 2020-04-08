@@ -1,0 +1,9 @@
+ vault kv put secret/sprin-cloud-config cloud.config.username=ramdevoxx cloud.config.username=R@ouf_280109
+ mongodb+srv://ramdevoxx:<password>@cluster0-7vpkp.mongodb.net/test?retryWrites=true&w=majority
+ vault server --dev --dev-root-token-id="00000000-0000-0000-0000-000000000000"
+ 
+ netstat -ano | findstr "8080"
+ taskkill /PID 8228 /F
+
+ Sync: Upload complet. GIST ID: 34bd17105f4184ac3da9128e01d7a0ac.
+ Merci de copiez et d'utiliser cette ID dans d'autres machines pour télécharger les paramètres.
